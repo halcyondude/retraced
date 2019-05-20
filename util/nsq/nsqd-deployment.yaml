@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nsqd
+spec:
+  selector:
+    matchLabels:
+      tier: nsq
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: auditlog
+        tier: nsq
+    spec:
+      containers:
+        - name: nsqd
+          image: nsqio/nsq:v1.0.0-compat
+          command:
+            - /bin/sh
+          args:
+            - -c
+            - nsqd
+              -statsd-address
+              ${STATSD_HOST}:${STATSD_PORT}
+              -statsd-prefix
+              "nsqd."
+          env:
+            - name: STATSD_HOST
+              value: ""
+            - name: STATSD_PORT
+              value: ""
+          ports:
+            - containerPort: 4150
+            - containerPort: 4151

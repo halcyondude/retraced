@@ -1,0 +1,2 @@
+resources:
+  - ./dbutil-deployment.yaml

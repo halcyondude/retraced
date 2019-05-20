@@ -1,0 +1,40 @@
+apiVersion: schemas.schemahero.io/v1alpha2
+kind: Table
+metadata:
+  labels:
+    controller-tools.k8s.io: "1.0"
+  name: admin-token
+spec:
+  database: retraced-postgres
+  name: admin_token
+  requires: []
+  schema:
+    postgres:
+      primaryKey:
+      - id
+      columns:
+      - name: id
+        type: text
+        constraints:
+          notNull: true
+      - name: token_bcrypt
+        type: text
+        constraints:
+          notNull: true
+      - name: user_id
+        type: text
+        constraints:
+          notNull: true
+      - name: disabled
+        type: boolean
+        constraints:
+          notNull: true
+        default: "false"
+      - name: created
+        type: timestamp without time zone
+        constraints:
+          notNull: true
+        default: CURRENT_TIMESTAMP
+      - name: last_used
+        type: timestamp without time zone
+

@@ -1,0 +1,54 @@
+apiVersion: schemas.schemahero.io/v1alpha2
+kind: Table
+metadata:
+  labels:
+    controller-tools.k8s.io: "1.0"
+  name: ingest-task
+spec:
+  database: retraced-postgres
+  name: ingest_task
+  requires: []
+  schema:
+    postgres:
+      primaryKey:
+      - id
+      columns:
+      - name: id
+        type: text
+        constraints:
+          notNull: true
+      - name: original_event
+        type: text
+        constraints:
+          notNull: true
+      - name: normalized_event
+        type: text
+      - name: saved_to_dynamo
+        type: boolean
+        constraints:
+          notNull: true
+        default: "false"
+      - name: saved_to_postgres
+        type: boolean
+        constraints:
+          notNull: true
+        default: "false"
+      - name: saved_to_elasticsearch
+        type: boolean
+        constraints:
+          notNull: true
+        default: "false"
+      - name: saved_to_scylla
+        type: boolean
+        constraints:
+          notNull: true
+        default: "false"
+      - name: project_id
+        type: text
+      - name: environment_id
+        type: text
+      - name: new_event_id
+        type: text
+      - name: received
+        type: timestamp without time zone
+

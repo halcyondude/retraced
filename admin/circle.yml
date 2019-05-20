@@ -1,0 +1,22 @@
+machine:
+  node:
+    version: 7.1.0
+  services:
+    - docker
+
+dependencies:
+  pre:
+    - npm install -g npm@3.x.x
+    - npm install -g yarn
+
+  override:
+    - yarn install
+
+test:
+  pre:
+    - ./build-parallel.sh:
+        parallel: true
+
+  override:
+    - yarn test
+

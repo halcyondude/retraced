@@ -1,0 +1,34 @@
+apiVersion: schemas.schemahero.io/v1alpha2
+kind: Table
+metadata:
+  labels:
+    controller-tools.k8s.io: "1.0"
+  name: geoip
+spec:
+  database: retraced-postgres
+  name: geoip
+  requires: []
+  schema:
+    postgres:
+      primaryKey:
+      - network
+      columns:
+      - name: network
+        type: cidr
+        constraints:
+          notNull: true
+      - name: lat
+        type: decimal
+      - name: lon
+        type: decimal
+      - name: country
+        type: text
+      - name: subdiv1
+        type: text
+      - name: subdiv2
+        type: text
+      - name: timezone
+        type: text
+      - name: synced
+        type: date
+

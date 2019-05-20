@@ -1,0 +1,12 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: logs-viewer
+spec:
+  template:
+    spec:
+      containers:
+        - name: logs-viewer
+          ports:
+            - name: logs-viewer
+              containerPort: 6012

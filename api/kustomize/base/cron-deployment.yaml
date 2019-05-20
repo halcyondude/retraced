@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cron
+spec:
+  selector:
+    matchLabels:
+      tier: cron
+  template:
+    metadata:
+      labels:
+        app: auditlog
+        tier: cron
+        dest: nsq
+        source: cron
+    spec:
+      containers:
+        - name: cron
+          image: retraced-api
+          imagePullPolicy: IfNotPresent
+          command:
+            - /bin/bash
+            - -c
+            - /usr/local/bin/replicated-auditlog-cron /crontab | grep ERRO
+          env:
+            - name: NSQD_HOST
+              value: nsqd
+            - name: NSQD_HTTP_PORT
+              value: "4151"
+            - name: RETRACED_DISABLE_GEOSYNC
+              value: "1"
+      imagePullSecrets:
+      - name: auditlog-imagepull-secret
+

@@ -1,16 +1,5 @@
----
 bases:
   - ../../base
-resources:
-  - ./secrets.yaml
-  - ./integrationtest.yaml
-commonLabels:
-  retraceddev: "1"
+  # - ../../../util/elasticsearch
+  - ../../../util/nsq
 
-patchesStrategicMerge:
-  - ./api-deployment.yaml
-  - ./api-service.yaml
-  - ./cron-deployment.yaml
-  - ./migratees-job.yaml
-  - ./migratepg-job.yaml
-  - ./processor-deployment.yaml

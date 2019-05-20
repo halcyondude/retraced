@@ -1,0 +1,30 @@
+apiVersion: schemas.schemahero.io/v1alpha2
+kind: Table
+metadata:
+  labels:
+    controller-tools.k8s.io: "1.0"
+  name: active-actor
+spec:
+  database: retraced-postgres
+  name: active_actor
+  requires: []
+  schema:
+    postgres:
+      primaryKey: []
+      columns:
+      - name: created_at
+        type: timestamp
+        constraints:
+          notNull: true
+      - name: project_id
+        type: text
+        constraints:
+          notNull: true
+      - name: environment_id
+        type: text
+        constraints:
+          notNull: true
+      - name: actor_id
+        type: text
+        constraints:
+          notNull: true

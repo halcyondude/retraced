@@ -1,0 +1,3 @@
+resources:
+  - ./cron-deployment.yaml
+  - ./processor-deployment.yaml

@@ -1,0 +1,40 @@
+apiVersion: schemas.schemahero.io/v1alpha2
+kind: Table
+metadata:
+  labels:
+    controller-tools.k8s.io: "1.0"
+  name: active-search
+spec:
+  database: retraced-postgres
+  name: active_search
+  requires: []
+  schema:
+    postgres:
+      primaryKey:
+      - id
+      columns:
+      - name: id
+        type: text
+        constraints:
+          notNull: true
+      - name: project_id
+        type: text
+        constraints:
+          notNull: true
+      - name: environment_id
+        type: text
+        constraints:
+          notNull: true
+      - name: group_id
+        type: text
+        constraints:
+          notNull: true
+      - name: saved_search_id
+        type: text
+        constraints:
+          notNull: true
+      - name: next_token
+        type: text
+      - name: next_start_time
+        type: bigint
+

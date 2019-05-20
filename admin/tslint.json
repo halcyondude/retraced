@@ -1,0 +1,11 @@
+{
+  "extends": "tslint:recommended",
+  "jsRules": {
+    "no-console": [false],
+    "object-literal-sort-keys": false,
+    "max-line-length": [false]
+  },
+  "rules": {
+    "interface-name": [false]
+  }
+}

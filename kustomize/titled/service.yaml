@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: titled-cloud
+  labels:
+    app: titled-cloud
+spec:
+  type: ClusterIP
+  ports:
+  - name: titled-cloud
+    port: 3000
+    targetPort: titled-cloud
+  selector:
+    app: titled-cloud

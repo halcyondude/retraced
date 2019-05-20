@@ -1,0 +1,61 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api
+spec:
+  selector:
+    matchLabels:
+      tier: api
+  template:
+    metadata:
+      labels:
+        app: auditlog
+        tier: api
+    spec:
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - weight: 1
+            podAffinityTerm:
+              labelSelector:
+                matchExpressions:
+                - key: app
+                  operator: In
+                  values:
+                  - auditlog
+                - key: tier
+                  operator: In
+                  values:
+                  - api
+              topologyKey: "kubernetes.io/hostname"
+      containers:
+        - name: api
+          readinessProbe:
+            httpGet:
+              port: 3000
+              path: /healthz
+          image: retraced-api
+          imagePullPolicy: IfNotPresent
+          command:
+            - /src/api
+          ports:
+            - containerPort: 3000
+              name: http
+              protocol: TCP
+          env:
+            - name: POSTGRES_URI
+              value: postgres://retraced:password@postgres:5432/retraced
+            - name: HMAC_SECRET_VIEWER
+              value: abcdef
+            - name: HMAC_SECRET_ADMIN
+              value: ghijkl
+            - name: NSQD_HOST
+              value: nsqd
+            - name: NSQD_TCP_PORT
+              value: "4150"
+            - name: NSQD_HTTP_PORT
+              value: "4151"
+            - name: RETRACED_API_BASE
+              value: "http://localhost:3000/auditlog"
+            - name: API_BASE_URL_PATH
+              value: "/auditlog"

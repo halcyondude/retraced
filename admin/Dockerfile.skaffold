@@ -1,0 +1,9 @@
+FROM retraceddev/retraced-admin:latest
+
+ADD . /src/
+WORKDIR /src
+
+EXPOSE 6011
+RUN make deps
+ENTRYPOINT ["make", "serve"]
+

@@ -1,0 +1,11 @@
+node --max-old-space-size=6144 `npm bin`/webpack-dev-server --config webpack.config.js --color -w --mode development
+[34mℹ[39m [90m｢wds｣[39m: Project is running at [1m[34mhttp://localhost:6012/[39m[22m
+[34mℹ[39m [90m｢wds｣[39m: webpack output is served from [1m[34m/[39m[22m
+[34mℹ[39m [90m｢wds｣[39m: Content not from webpack is served from [1m[34m/home/marc.e.campbell/go/src/github.com/retracedhq/retraced/logs-viewer[39m[22m
+[34mℹ[39m [90m｢wds｣[39m: 404s will fallback to [1m[34m/index.html[39m[22m
+
+[at-loader] Using typescript@2.4.2 from typescript and "tsconfig.json" from /home/marc.e.campbell/go/src/github.com/retracedhq/retraced/logs-viewer/tsconfig.json.
+
+[36m
+[at-loader] Checking started in a separate process...[39m
+[34mℹ[39m [90m｢wdm｣[39m: Failed to compile.

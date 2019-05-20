@@ -1,0 +1,43 @@
+apiVersion: schemas.schemahero.io/v1alpha2
+kind: Table
+metadata:
+  labels:
+    controller-tools.k8s.io: "1.0"
+  name: display-template
+spec:
+  database: retraced-postgres
+  name: display_template
+  requires: []
+  schema:
+    postgres:
+      primaryKey:
+      - id
+      columns:
+      - name: id
+        type: text
+        constraints:
+          notNull: true
+      - name: created_at
+        type: timestamp without time zone
+      - name: updated_at
+        type: timestamp without time zone
+      - name: project_id
+        type: text
+        constraints:
+          notNull: true
+      - name: environment_id
+        type: text
+        constraints:
+          notNull: true
+      - name: name
+        type: text
+        constraints:
+          notNull: true
+      - name: rule
+        type: text
+        constraints:
+          notNull: true
+      - name: template
+        type: text
+        constraints:
+          notNull: true

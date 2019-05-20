@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api
+spec:
+  replicas: 1
+  template:
+    spec:
+      containers:
+        - name: api
+          readinessProbe:
+            httpGet:
+              port: 3000
+              path: /healthz
+          env:
+            - name: POSTGRES_URI
+              value: postgres://retraced:password@postgres:5432/retraced
+            - name: PG_SEARCH
+              value: "true"

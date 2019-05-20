@@ -1,0 +1,27 @@
+resources:
+- ./target.yaml
+- ./invite.yaml
+- ./action.yaml
+- ./projectuser.yaml
+- ./actor.yaml
+- ./token.yaml
+- ./project.yaml
+- ./environment.yaml
+- ./reporting_event.yaml
+- ./active_actor.yaml
+- ./geoip.yaml
+- ./active_group.yaml
+- ./group_detail.yaml
+- ./saved_export.yaml
+- ./eitapi_token.yaml
+- ./saved_search.yaml
+- ./active_search.yaml
+- ./environmentuser.yaml
+- ./display_template.yaml
+- ./deletion_request.yaml
+- ./retraceduser.yaml
+- ./deletion_confirmation.yaml
+- ./ingest_task.yaml
+- ./backlog.yaml
+- ./viewer_descriptors.yaml
+- ./admin_token.yaml

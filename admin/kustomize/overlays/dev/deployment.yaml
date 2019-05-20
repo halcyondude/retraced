@@ -1,0 +1,12 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: retraced-admin
+spec:
+  template:
+    spec:
+      containers:
+        - name: retraced-admin
+          ports:
+            - name: retraced-admin
+              containerPort: 6011

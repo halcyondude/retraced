@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: retraced-admin
+spec:
+  selector:
+    matchLabels:
+      app: retraced-admin
+  template:
+    metadata:
+      labels:
+        app: retraced-admin
+    spec:
+      containers:
+        - name: retraced-admin
+          image: retraced-admin
+          imagePullPolicy: IfNotPresent
+

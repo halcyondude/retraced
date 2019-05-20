@@ -1,0 +1,33 @@
+apiVersion: schemas.schemahero.io/v1alpha2
+kind: Table
+metadata:
+  labels:
+    controller-tools.k8s.io: "1.0"
+  name: deletion-confirmation
+spec:
+  database: retraced-postgres
+  name: deletion_confirmation
+  requires: []
+  schema:
+    postgres:
+      primaryKey:
+      - id
+      columns:
+      - name: id
+        type: text
+        constraints:
+          notNull: true
+      - name: deletion_request_id
+        type: text
+        constraints:
+          notNull: true
+      - name: retraceduser_id
+        type: text
+        constraints:
+          notNull: true
+      - name: received
+        type: timestamp without time zone
+      - name: visible_code
+        type: text
+        constraints:
+          notNull: true

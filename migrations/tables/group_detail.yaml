@@ -1,0 +1,37 @@
+apiVersion: schemas.schemahero.io/v1alpha2
+kind: Table
+metadata:
+  labels:
+    controller-tools.k8s.io: "1.0"
+  name: group-detail
+spec:
+  database: retraced-postgres
+  name: group_detail
+  requires: []
+  schema:
+    postgres:
+      primaryKey:
+      - environment_id
+      - group_id
+      columns:
+      - name: created_at
+        type: timestamp without time zone
+      - name: project_id
+        type: text
+        constraints:
+          notNull: true
+      - name: environment_id
+        type: text
+        constraints:
+          notNull: true
+      - name: group_id
+        type: text
+        constraints:
+          notNull: true
+      - name: name
+        type: text
+      - name: last_active
+        type: timestamp without time zone
+      - name: event_count
+        type: bigint
+

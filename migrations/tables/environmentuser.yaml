@@ -1,0 +1,38 @@
+apiVersion: schemas.schemahero.io/v1alpha2
+kind: Table
+metadata:
+  labels:
+    controller-tools.k8s.io: "1.0"
+  name: environmentuser
+spec:
+  database: retraced-postgres
+  name: environmentuser
+  requires: []
+  schema:
+    postgres:
+      primaryKey:
+      - user_id
+      - environment_id
+      columns:
+      - name: user_id
+        type: text
+        constraints:
+          notNull: true
+      - name: environment_id
+        type: text
+        constraints:
+          notNull: true
+      - name: daily_report
+        type: boolean
+        constraints:
+          notNull: true
+        default: "true"
+      - name: email_token
+        type: text
+        constraints:
+          notNull: true
+      - name: anomaly_report
+        type: boolean
+        constraints:
+          notNull: true
+        default: "true"

@@ -1,0 +1,39 @@
+apiVersion: schemas.schemahero.io/v1alpha2
+kind: Table
+metadata:
+  labels:
+    controller-tools.k8s.io: "1.0"
+  name: retraceduser
+spec:
+  database: retraced-postgres
+  name: retraceduser
+  requires: []
+  schema:
+    postgres:
+      primaryKey:
+      - id
+      columns:
+      - name: id
+        type: text
+        constraints:
+          notNull: true
+      - name: created
+        type: timestamp without time zone
+      - name: email
+        type: text
+      - name: last_login
+        type: timestamp without time zone
+      - name: password_crypt
+        type: text
+      - name: external_auth_id
+        type: text
+      - name: timezone
+        type: text
+        constraints:
+          notNull: true
+        default: '''US/Pacific''::text'
+      - name: tx_emails_recipient
+        type: boolean
+        constraints:
+          notNull: true
+        default: "true"

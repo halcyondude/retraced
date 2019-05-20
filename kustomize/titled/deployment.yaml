@@ -1,0 +1,21 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: titled-cloud
+spec:
+  template:
+    metadata:
+      labels:
+        app: titled-cloud
+    spec:
+      containers:
+        - name: titled-cloud
+          image: replicated/titled
+          imagePullPolicy: IfNotPresent
+          args: ["serve"]
+          env:
+            - name: GRAPHQL_API_ADDRESS
+              value: http://graphql-api-prem:3000/graphql
+          ports:
+          - name: titled-cloud
+            containerPort: 3000

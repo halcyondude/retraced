@@ -1,0 +1,14 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api
+spec:
+  replicas: 2
+  template:
+    spec:
+      imagePullSecrets:
+        - name: auditlog-imagepull-secret
+      containers:
+        - name: api
+          image: registry.replicated.com/retraced/retraced-api:latest
+

@@ -1,0 +1,3 @@
+resources:
+  - ./nsqd-deployment.yaml
+  - ./nsqd-service.yaml

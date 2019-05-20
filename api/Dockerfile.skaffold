@@ -1,0 +1,11 @@
+FROM retraceddev/retraced-api:latest
+
+ADD ./package.json /src/package.json
+ADD ./yarn.lock /src/yarn.lock
+WORKDIR /src
+RUN yarn install --frozen-lockfile --silent
+
+ADD . /src
+RUN make build
+
+CMD ["make", "run"]

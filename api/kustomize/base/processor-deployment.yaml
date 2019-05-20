@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: processor
+spec:
+  selector:
+    matchLabels:
+      tier: processor
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: auditlog
+        tier: processor
+    spec:
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - weight: 2
+            podAffinityTerm:
+              labelSelector:
+                matchExpressions:
+                - key: app
+                  operator: In
+                  values:
+                  - auditlog
+                - key: tier
+                  operator: In
+                  values:
+                  - processor
+              topologyKey: "kubernetes.io/hostname"
+      volumes:
+        - name: tmpdir
+          emptyDir: {}
+      containers:
+        - name: processor
+          image: retraced-api
+          imagePullPolicy: IfNotPresent
+
+          command:
+            - /src/processor
+          volumeMounts:
+            - mountPath: /tmp
+              name: tmpdir
+          env:
+            - name: TMPDIR
+              value: /tmp
+            - name: NO_WARP_PIPE
+              value: "1"
+      imagePullSecrets:
+      - name: auditlog-imagepull-secret
+

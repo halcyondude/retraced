@@ -1,0 +1,26 @@
+apiVersion: schemas.schemahero.io/v1alpha2
+kind: Table
+metadata:
+  labels:
+    controller-tools.k8s.io: "1.0"
+  name: invite
+spec:
+  database: retraced-postgres
+  name: invite
+  requires: []
+  schema:
+    postgres:
+      primaryKey:
+      - id
+      columns:
+      - name: id
+        type: text
+        constraints:
+          notNull: true
+      - name: created
+        type: timestamp without time zone
+      - name: email
+        type: text
+      - name: project_id
+        type: text
+

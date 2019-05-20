@@ -1,0 +1,38 @@
+apiVersion: schemas.schemahero.io/v1alpha2
+kind: Table
+metadata:
+  labels:
+    controller-tools.k8s.io: "1.0"
+  name: action
+spec:
+  database: retraced-postgres
+  name: action
+  requires: []
+  schema:
+    postgres:
+      primaryKey:
+      - id
+      columns:
+      - name: id
+        type: text
+        constraints:
+          notNull: true
+      - name: created
+        type: timestamp without time zone
+      - name: environment_id
+        type: text
+      - name: event_count
+        type: bigint
+
+        default: "1"
+      - name: first_active
+        type: timestamp without time zone
+      - name: action
+        type: text
+      - name: last_active
+        type: timestamp without time zone
+      - name: project_id
+        type: text
+      - name: display_template
+        type: text
+
